@@ -1,7 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 
 
-export const CoinContext = createContext();
+export const CoinContext = createContext(); //added coincontext using the createcontext function
+
 
 const CoinContextProvider = (props) => {
 
@@ -22,6 +23,7 @@ const CoinContextProvider = (props) => {
             const data = await results.json();
             setAllCoins(data);
 
+            // Send the fetched data to the backend
             await fetch('http://localhost:8082/save-coins', {
                 method: 'POST',
                 headers: {
@@ -54,11 +56,12 @@ const CoinContextProvider = (props) => {
         fetchAllCoins();
     }, [currency])
 
-    const contextValue = {
+    const contextValue = { //declare any data
         allCoins, currency, setCurrency
     }
 
     return (
+        // using the provider and the value, the data(contextValue)  can be passed in other components
         <CoinContext.Provider value={contextValue}>
             {props.children}
         </CoinContext.Provider>
