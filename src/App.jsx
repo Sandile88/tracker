@@ -3,7 +3,7 @@ import { CoinContext } from './context/CoinContext';
 
 
 function App() {
-  const [allCoins, currency] = useState(0)
+  const {allCoins, currency} = useContext(CoinContext)
 
   return (
     <>
