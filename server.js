@@ -12,8 +12,9 @@ const corsOption = {
 app.use(cors(corsOption))
 app.use(express.json());
 
-app.post('save-coins', (request, result) => {
+app.post('/save-coins', (request, result) => {
     const coinsData = request.body;
+    console.log(coinsData);
 
     fs.writeFile('coinsData.json', JSON.stringify(coinsData, null, 2), (err) => {
         if (err) {
